@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STARLOGS Maintenance Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+    <div class="card">
+      <div class="card-head">
+        <h1>STARLOGS MAINTENANCE FORM</h1>
+        <p>Ini merupakan formulir pengerjaan unit</p>
+      </div>
+
+      <div id="dbBanner" class="hint-banner" style="display:none;"></div>
+
+      <form id="maintForm" novalidate>
+        <div class="field">
+          <label for="tanggal">Tanggal<span class="req">*</span></label>
+          <div class="picker">
+            <input type="text" id="tanggal" inputmode="numeric" placeholder="dd-mm-yyyy" maxlength="10" autocomplete="off" required>
+            <button type="button" class="picker-btn" id="tanggalBtn" aria-label="Pilih tanggal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </button>
+            <input type="date" id="tanggalNative" class="native-hidden" tabindex="-1" aria-hidden="true">
+          </div>
+          <div class="err-msg" id="err-tanggal"></div>
+        </div>
+
+        <div class="field">
+          <label for="noUnit">No. Unit<span class="req">*</span></label>
+          <select id="noUnit" required>
+            <option value="" disabled selected>Pilih unit</option>
+          </select>
+        </div>
+
+        <div class="field row2">
+          <div>
+            <label for="hm">HM</label>
+            <input type="number" id="hm" inputmode="decimal" min="0" step="any" placeholder="0">
+          </div>
+          <div>
+            <label for="km">KM<span class="req">*</span></label>
+            <input type="number" id="km" inputmode="decimal" min="0" step="any" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="kerusakan">Kerusakan<span class="req">*</span></label>
+          <textarea id="kerusakan" required placeholder="Jelaskan kerusakan unit"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="perbaikan">Perbaikan<span class="req">*</span></label>
+          <textarea id="perbaikan" required placeholder="Jelaskan perbaikan yang dilakukan"></textarea>
+        </div>
+
+        <div class="field sperepart-block">
+          <label>Sperepart</label>
+          <div id="sperepartRows"></div>
+          <button type="button" class="add-sperepart" id="addSperepart">
+            <span class="plus">+</span> Tambah sperepart
+          </button>
+        </div>
+
+        <div class="field">
+          <label for="lokasi">Lokasi</label>
+          <input type="text" id="lokasi" placeholder="Lokasi pengerjaan">
+        </div>
+
+        <div class="field row2">
+          <div>
+            <label for="jamMulai">Jam mulai<span class="req">*</span></label>
+            <div class="picker">
+              <input type="text" id="jamMulai" inputmode="numeric" placeholder="HH:MM" maxlength="5" autocomplete="off" required>
+              <button type="button" class="picker-btn" id="jamMulaiBtn" aria-label="Pilih jam">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </button>
+              <input type="time" id="jamMulaiNative" class="native-hidden" tabindex="-1" aria-hidden="true" min="00:00" max="23:59">
+            </div>
+            <div class="err-msg" id="err-jamMulai"></div>
+          </div>
+          <div>
+            <label for="jamSelesai">Jam Selesai<span class="req">*</span></label>
+            <div class="picker">
+              <input type="text" id="jamSelesai" inputmode="numeric" placeholder="HH:MM" maxlength="5" autocomplete="off" required>
+              <button type="button" class="picker-btn" id="jamSelesaiBtn" aria-label="Pilih jam">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </button>
+              <input type="time" id="jamSelesaiNative" class="native-hidden" tabindex="-1" aria-hidden="true" min="00:00" max="23:59">
+            </div>
+            <div class="err-msg" id="err-jamSelesai"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pic">PIC<span class="req">*</span></label>
+          <input type="text" id="pic" placeholder="Nama teknisi">
+        </div>
+
+        <div class="field">
+          <label>Ready<span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="ready" value="Yes" required> Yes</label>
+            <label class="radio-opt"><input type="radio" name="ready" value="No"> No</label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Simpan Form</button>
+      </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
