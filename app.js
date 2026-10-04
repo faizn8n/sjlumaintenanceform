@@ -294,20 +294,23 @@ form.addEventListener('submit', async (e) => {
     return;
   }
  
+  // Nama kunci di sini HARUS sama persis dengan nama kolom di tabel
+  // maintenance_activity_dataset (lihat skema Supabase).
   const record = {
-    tanggal: dateToISO(document.getElementById('tanggal').value), // disimpan yyyy-mm-dd
-    noUnit: document.getElementById('noUnit').value,
+    tanggal: dateToISO(document.getElementById('tanggal').value), // kolom date, format yyyy-mm-dd
+    no_unit: document.getElementById('noUnit').value,
     hm: document.getElementById('hm').value ? Number(document.getElementById('hm').value) : null,
-    km: Number(document.getElementById('km').value),
+    km: document.getElementById('km').value ? Number(document.getElementById('km').value) : null,
     kerusakan: document.getElementById('kerusakan').value.trim(),
-    perbaikan: document.getElementById('perbaikan').value.trim(),
-    spareparts: collectSpareparts(),
+    'pekerjaan / perbaikan': document.getElementById('perbaikan').value.trim(), // nama kolom aslinya mengandung spasi & "/"
+    sperepart: collectSpareparts(),      // kolom jsonb: [{part_no, label, qty}, ...]
     lokasi: document.getElementById('lokasi').value.trim(),
-    jamMulai: document.getElementById('jamMulai').value,
-    jamSelesai: document.getElementById('jamSelesai').value,
+    jam_mulai: document.getElementById('jamMulai').value,     // "HH:MM", cocok dengan kolom time
+    jam_selesai: document.getElementById('jamSelesai').value,
     pic: document.getElementById('pic').value.trim(),
-    ready: readyEl.value,
-    created_at: new Date().toISOString()
+    ready: readyEl.value === 'Yes'       // kolom boolean
+    // created_at dibiarkan kosong; isi kalau ingin dicatat dari sisi browser:
+    // created_at: new Date().toISOString(),
   };
  
   if (!supabaseConfigured) {
