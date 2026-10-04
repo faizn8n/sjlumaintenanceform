@@ -296,15 +296,15 @@ form.addEventListener('submit', async (e) => {
  
   const record = {
     tanggal: dateToISO(document.getElementById('tanggal').value), // disimpan yyyy-mm-dd
-    noUnit: document.getElementById('no_unit').value,
+    noUnit: document.getElementById('noUnit').value,
     hm: document.getElementById('hm').value ? Number(document.getElementById('hm').value) : null,
     km: Number(document.getElementById('km').value),
     kerusakan: document.getElementById('kerusakan').value.trim(),
-    perbaikan: document.getElementById('pekerjaan/perbaikan').value.trim(),
+    perbaikan: document.getElementById('perbaikan').value.trim(),
     spareparts: collectSpareparts(),
     lokasi: document.getElementById('lokasi').value.trim(),
-    jamMulai: document.getElementById('jam_mulai').value,
-    jamSelesai: document.getElementById('jam_selesai').value,
+    jamMulai: document.getElementById('jamMulai').value,
+    jamSelesai: document.getElementById('jamSelesai').value,
     pic: document.getElementById('pic').value.trim(),
     ready: readyEl.value,
     created_at: new Date().toISOString()
