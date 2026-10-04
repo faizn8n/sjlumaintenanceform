@@ -302,7 +302,7 @@ form.addEventListener('submit', async (e) => {
     hm: document.getElementById('hm').value ? Number(document.getElementById('hm').value) : null,
     km: document.getElementById('km').value ? Number(document.getElementById('km').value) : null,
     kerusakan: document.getElementById('kerusakan').value.trim(),
-    'pekerjaan / perbaikan': document.getElementById('perbaikan').value.trim(), // nama kolom aslinya mengandung spasi & "/"
+    perbaikan: document.getElementById('perbaikan').value.trim(),
     sperepart: collectSpareparts(),      // kolom jsonb: [{part_no, label, qty}, ...]
     lokasi: document.getElementById('lokasi').value.trim(),
     jam_mulai: document.getElementById('jamMulai').value,     // "HH:MM", cocok dengan kolom time
